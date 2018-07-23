@@ -6,7 +6,7 @@ const BUTTONS = ['Default', 'Primary', 'Success', 'Info', 'Warning', 'Danger'];
 class SignIn extends Component {
   render() {
     return (
-      <Grid>
+      
         <Panel >
           <Panel.Heading>
             <h4>Welcome to the Would You Rather App!</h4>
@@ -26,7 +26,7 @@ class SignIn extends Component {
             </DropdownButton> */}
           </Panel.Body>
         </Panel>
-      </Grid>
+     
     )
   }
 }
