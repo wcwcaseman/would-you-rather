@@ -22,6 +22,21 @@
   font-size: large;
 }
 
+.SignInSection{
+  border: black;
+  border-style: solid;
+  border-width: thin;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  position: relative;
+  max-width: 500px;
+  margin: 10px auto;
+  padding: 10px;
+
+}
+
+
+
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }

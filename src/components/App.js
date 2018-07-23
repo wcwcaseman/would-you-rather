@@ -1,18 +1,48 @@
 import React, { Component } from 'react';
-import logo from '../logo.svg';
+import {Navbar , NavItem, Nav} from 'react-bootstrap'
 import '../App.css';
+import SignIn from './SignIn';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get stayesrtedhdddsdsdsddddhhggfgfghhhhh, edit <code>src/App.js</code> and save to reload. wcwd
-        </p>
+        <Navbar inverse collapseOnSelect>
+          <Navbar.Header>
+            <Navbar.Brand>
+              <a href="#brand">Home</a>
+            </Navbar.Brand>
+            <Navbar.Toggle />
+          </Navbar.Header>
+          <Navbar.Collapse>
+            <Nav>
+              <NavItem eventKey={1} href="#">
+                New Question
+              </NavItem>
+              <NavItem eventKey={2} href="#">
+                Leader Board
+              </NavItem>
+            </Nav>
+            <Nav pullRight>
+              <NavItem eventKey={1} href="#">
+                Hello, Person
+              </NavItem>
+              <NavItem eventKey={2} href="#">
+                Logout
+              </NavItem>
+            </Nav>
+          </Navbar.Collapse>
+        </Navbar>
+
+
+
+
+
+
+
+        <SignIn/>
+
+
       </div>
     );
   }
