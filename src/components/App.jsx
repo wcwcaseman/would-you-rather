@@ -1,56 +1,34 @@
-import React, { Component } from 'react';
-import {Navbar , NavItem, Nav} from 'react-bootstrap'
+import React, { Component, Fragment } from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 import '../App.css';
 import SignIn from './SignIn';
 import QuestionSubmitCard from './QuestionSubmitCard'
 import { Panel, Grid, Row, Col,DropdownButton,MenuItem } from 'react-bootstrap'
-import QuestionResultsCard from './QuestionResultsCard'
+import Question from './Question'
 import NewQuestion from './NewQuestion'
 import QuestionViewPollCard from './QuestionViewPollCard'
-import QuestionScoreCard from './QuestionScoreCard'
 import QuestionsList from './QuestionsList'
+import NavigationBar from './NavigationBar'
+import LeaderBoard from './LeaderBoard'
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <Navbar inverse collapseOnSelect>
-          <Navbar.Header>
-            <Navbar.Brand>
-              <a href="/">Home</a>
-            </Navbar.Brand>
-            <Navbar.Toggle />
-          </Navbar.Header>
-          <Navbar.Collapse>
-            <Nav>
-              <NavItem eventKey={1} href="/NewQuestion">
-                New Question
-              </NavItem>
-              <NavItem eventKey={2} href="/LeaderBoard">
-                Leader Board
-              </NavItem>
-            </Nav>
-            <Nav pullRight>
-              <NavItem eventKey={1}>
-                Hello, Person
-              </NavItem>
-              <NavItem eventKey={2} href="/Login">
-                Logout
-              </NavItem>
-            </Nav>
-          </Navbar.Collapse>
-        </Navbar>
-        <Grid>
-          <SignIn/>
-          <QuestionSubmitCard/>
-          <QuestionResultsCard/>
-          <NewQuestion/>
-          <QuestionViewPollCard/>
-          <QuestionScoreCard/>
-          <QuestionsList/>
-        </Grid>
 
-
+      <Router>
+          <Fragment>         
+              <NavigationBar />
+                  <Grid>
+                    <Route path='/' exact component={QuestionsList} />
+                    <Route path='/NewQuestion' component={NewQuestion} />
+                    <Route path='/Login' component={SignIn} />
+                    <Route path='/LeaderBoard' component={LeaderBoard} />
+                    <Route path='/questions/:question_id' component={Question} />
+                  </Grid>
+          </Fragment>
+        </Router>
+          
       </div>
     );
   }

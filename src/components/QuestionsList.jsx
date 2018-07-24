@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Tab, Nav, NavItem,Navbar, Panel, Button,Radio, FormGroup, Grid, Row, Col,DropdownButton,MenuItem } from 'react-bootstrap'
 import ResultBar from './ResultBar'
+import QuestionViewPollCard from './QuestionViewPollCard'
+
 
 class QuestionsList extends Component{
 
@@ -10,7 +12,7 @@ class QuestionsList extends Component{
     return (
     <div>
             <Panel>
-<Tab.Container id="left-tabs-example" defaultActiveKey="first">
+<Tab.Container id="left-tabs-example" defaultActiveKey="UnansweredQuestions">
   <Row className="clearfix">
     <Col sm={12}>
     <Navbar>
@@ -24,14 +26,14 @@ class QuestionsList extends Component{
 
       <Tab.Content animation>
         <Tab.Pane eventKey="UnansweredQuestions">
-
+        
             UnansweredQuestions
-
+            <QuestionViewPollCard/>
         </Tab.Pane>
         <Tab.Pane eventKey="AnsweredQuestions">
         
             AnsweredQuestions
-        
+            <QuestionViewPollCard/>
         </Tab.Pane>
       </Tab.Content>
 
