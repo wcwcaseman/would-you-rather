@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux'
 import { Tab, Nav, NavItem,Navbar, Panel, Button,Radio, FormGroup, Grid, Row, Col,DropdownButton,MenuItem } from 'react-bootstrap'
 import ResultBar from './ResultBar'
 import QuestionViewPollCard from './QuestionViewPollCard'
@@ -46,4 +47,4 @@ class QuestionsList extends Component{
   }
 }
 
-export default QuestionsList;
+export default connect()(QuestionsList)
