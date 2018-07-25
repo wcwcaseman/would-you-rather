@@ -1,12 +1,19 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { Panel, Button,Radio, FormGroup, Grid, Row, Col,DropdownButton,MenuItem } from 'react-bootstrap'
-import ResultBar from './ResultBar'
-import { Link, withRouter } from 'react-router-dom'
+import { Panel, Button, Grid, Col } from 'react-bootstrap'
+//import ResultBar from './ResultBar'
+import { withRouter } from 'react-router-dom'
 
 class QuestionViewPollCard extends Component {
+
+  toQuestion = (e, id) => {
+    e.preventDefault()
+    //  Redirect to question
+    this.props.history.push(`/questions/${id}`)
+  }
+
     render() {
-      const { question, authorsName } = this.props
+      const { question, authorsName, authorsAvatar } = this.props
 
       return(  
       
@@ -15,12 +22,16 @@ class QuestionViewPollCard extends Component {
       <Panel.Body>
           <Grid>
           <Col sm={2}>
-            <image></image>
+          <img
+          src={authorsAvatar}
+          alt={`Avatar of ${authorsName}`}
+          className='avatar'
+        />
           </Col>
           <Col sm={9}>
           <h4>Would you rather</h4>
-          <div>...first question first set of characters...</div>
-          <Button>View Poll</Button>
+          <div>...{question.optionOne.text.substring(0,15)}...</div>
+          <Button onClick={(e) => this.toQuestion(e, question.id)} >View Poll</Button>
           </Col>
        </Grid>
       </Panel.Body>
@@ -65,13 +76,15 @@ function mapStateToProps ({authedUser, users, questions}, { id }) {
 
   //tweet could be null if we go to a url with an id that doesn't exist
 const question = questions[id]
-const authorsName = users[question.author].name
+const author = users[question.author]
 //pass the twwet the authed user so we know who is liking the tweet and the tweet info for display
 //formatTweet pass in the tweet, user who made the tweet, current user and parent tweet
 return {
   authedUser,
   question: question,
-  authorsName : authorsName
+  authorsName : author.name,
+  authorsAvatar : author.avatarURL,
+
 }
 }
 

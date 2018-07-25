@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import { Panel, Grid, Row, Col,DropdownButton,MenuItem } from 'react-bootstrap'
+import { Panel } from 'react-bootstrap'
 
-const BUTTONS = ['Default', 'Primary', 'Success', 'Info', 'Warning', 'Danger'];
+//const BUTTONS = ['Default', 'Primary', 'Success', 'Info', 'Warning', 'Danger'];
 
 class SignIn extends Component {
   render() {

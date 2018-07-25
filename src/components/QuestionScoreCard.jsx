@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Panel, Button,Radio, FormGroup, Grid, Row, Col,DropdownButton,MenuItem } from 'react-bootstrap'
-import ResultBar from './ResultBar'
+import { Panel, Grid, Col } from 'react-bootstrap'
+//import ResultBar from './ResultBar'
 
 class QuestionScoreCard extends Component {
     render() {

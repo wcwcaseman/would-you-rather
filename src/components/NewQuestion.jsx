@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Panel, Button, Radio, FormControl, Grid, Row, Col,DropdownButton,MenuItem } from 'react-bootstrap'
+import { Panel, Button, FormControl } from 'react-bootstrap'
 
 class NewQuestion extends Component {
     render() {

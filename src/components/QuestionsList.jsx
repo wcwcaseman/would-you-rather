@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { Tab, Nav, NavItem,Navbar, Panel, Button,Radio, FormGroup, Grid, Row, Col,DropdownButton,MenuItem } from 'react-bootstrap'
-import ResultBar from './ResultBar'
+import { Tab, Nav, NavItem,Navbar, Panel, Row, Col} from 'react-bootstrap'
+//import ResultBar from './ResultBar'
 import QuestionViewPollCard from './QuestionViewPollCard'
 
 
@@ -28,7 +28,7 @@ class QuestionsList extends Component{
               <Tab.Pane eventKey="UnansweredQuestions">
               <ul>
                   UnansweredQuestions
-                {this.props.questionIds.map((id) => (
+                {this.props.UnansweredQuestionIds.map((id) => (
                 <li key={id}>
                     <QuestionViewPollCard id={id}/>
                  </li>
@@ -40,7 +40,7 @@ class QuestionsList extends Component{
               <Tab.Pane eventKey="AnsweredQuestions">
               <ul>
                   AnsweredQuestions
-                {this.props.questionIds.map((id) => (
+                {this.props.AnsweredQuestionIds.map((id) => (
                   <li key={id}>
                       <QuestionViewPollCard id={id}/>
                   </li>
@@ -60,14 +60,23 @@ class QuestionsList extends Component{
 }
 
 //takes in questions state and returns question ids sorted by timestamp?
-function mapStateToProps ({ questions }) {
+function mapStateToProps ({ questions, users, authedUser }) {
+
+  const authedUserInfo = users[authedUser];
+  let answeredQuestionIds = [];
+  let unansweredQuestionIds = [];
+
+  if(questions != {} && users != {} && authedUser != null)
+  {  
+    answeredQuestionIds = Object.keys(questions).filter(key => authedUserInfo.answers.hasOwnProperty(key))
+    .sort((a,b) => questions[b].timestamp - questions[a].timestamp);
+    unansweredQuestionIds = Object.keys(questions).filter(key => !authedUserInfo.answers.hasOwnProperty(key))
+    .sort((a,b) => questions[b].timestamp - questions[a].timestamp);
+  }
+
   return {
-    questionIds: Object.keys(questions)
-      .sort((a,b) => questions[b].timestamp - questions[a].timestamp),
-      AnsweredQuestionIds: Object.keys(questions)
-      .sort((a,b) => questions[b].timestamp - questions[a].timestamp),
-      UnansweredQuestionIds: Object.keys(questions)
-      .sort((a,b) => questions[b].timestamp - questions[a].timestamp)
+      AnsweredQuestionIds: answeredQuestionIds,
+      UnansweredQuestionIds: unansweredQuestionIds
   }
 }
 
