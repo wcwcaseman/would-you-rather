@@ -5,12 +5,12 @@ import { Panel, Button,Radio, FormGroup, Grid, Col } from 'react-bootstrap'
 class QuestionSubmitCard extends Component {
     render() {
 
-      const { authorsName, authorsAvatar } = this.props
+      const {optionOneText,optionTwoText, authorsName, authorsAvatar } = this.props
 
       return(  
       
     <Panel>
-      <Panel.Heading>Person asks:</Panel.Heading>
+      <Panel.Heading>{authorsName} asks:</Panel.Heading>
       <Panel.Body>
           <Grid>
           <Col sm={2}>
@@ -26,10 +26,10 @@ class QuestionSubmitCard extends Component {
           <input type="radio" name="Answers" id="Answer2" value="Answer2"></input> */}
             <FormGroup>   
                 <Radio name="radioGroup">
-                    Answer One
+                    {optionOneText}
                 </Radio>{' '}
                 <Radio name="radioGroup">
-                    Answer two
+                    {optionTwoText}
                 </Radio>{' '}
             </FormGroup>
 
@@ -45,24 +45,29 @@ class QuestionSubmitCard extends Component {
   function mapStateToProps ({questions, authedUser, users}, { question }, props) {
     
     let author = {};
-
+    let optionOneText = "";
+    let optionTwoText = "";
+    //data can be undefined when navigating by url
     if(question === undefined && Object.keys(questions).length !== 0){
       const { question_id } = props.match.params;
       question = questions[question_id];
     }
 
-  
-  //data can be undefined when navigating by url
-  if(Object.keys(users).length !== 0 && question !== undefined){
-    author = users[question.author]
-  }
+    if(Object.keys(users).length !== 0 && question !== undefined){
+      author = users[question.author]
+      optionOneText = question.optionOne.text;
+      optionTwoText = question.optionTwo.text;
+    }
+
+
   
   return {
     authedUser,
     authorsName : author.name,
     authorsAvatar : author.avatarURL,
-    question : question
-  
+    question : question,
+    optionOneText : optionOneText,
+    optionTwoText: optionTwoText 
   }
   }
 
