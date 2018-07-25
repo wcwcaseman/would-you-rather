@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux'
 import { Panel, Button,Radio, FormGroup, Grid, Col } from 'react-bootstrap'
 
 class QuestionSubmitCard extends Component {
     render() {
+
+      const { authorsName, authorsAvatar } = this.props
+
       return(  
       
     <Panel>
@@ -10,7 +14,11 @@ class QuestionSubmitCard extends Component {
       <Panel.Body>
           <Grid>
           <Col sm={2}>
-            <image></image>
+            <img
+            src={authorsAvatar}
+            alt={`Avatar of ${authorsName}`}
+            className='avatar'
+          />
           </Col>
           <Col sm={10}>
           <h4>Would You Rather ...</h4>
@@ -34,4 +42,29 @@ class QuestionSubmitCard extends Component {
     }
   }
 
-  export default QuestionSubmitCard;
+  function mapStateToProps ({questions, authedUser, users}, { question }, props) {
+    
+    let author = {};
+
+    if(question === undefined && Object.keys(questions).length !== 0){
+      const { question_id } = props.match.params;
+      question = questions[question_id];
+    }
+
+  
+  //data can be undefined when navigating by url
+  if(Object.keys(users).length !== 0 && question !== undefined){
+    author = users[question.author]
+  }
+  
+  return {
+    authedUser,
+    authorsName : author.name,
+    authorsAvatar : author.avatarURL,
+    question : question
+  
+  }
+  }
+
+
+  export default connect(mapStateToProps)(QuestionSubmitCard);

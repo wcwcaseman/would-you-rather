@@ -11,7 +11,7 @@ class QuestionResultsCard extends Component {
       <Panel.Body>
           <Grid>
           <Col sm={2}>
-            <image></image>
+            <img></img>
           </Col>
           <Col sm={9}>
           <h4>Results:</h4>

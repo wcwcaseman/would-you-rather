@@ -7,7 +7,6 @@ import SignIn from './SignIn';
 import { Grid } from 'react-bootstrap'
 import Question from './Question'
 import NewQuestion from './NewQuestion'
-import QuestionViewPollCard from './QuestionViewPollCard'
 import QuestionsList from './QuestionsList'
 import NavigationBar from './NavigationBar'
 import LeaderBoard from './LeaderBoard'

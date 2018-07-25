@@ -81,9 +81,9 @@ const author = users[question.author]
 //formatTweet pass in the tweet, user who made the tweet, current user and parent tweet
 return {
   authedUser,
-  question: question,
   authorsName : author.name,
   authorsAvatar : author.avatarURL,
+  question : question
 
 }
 }

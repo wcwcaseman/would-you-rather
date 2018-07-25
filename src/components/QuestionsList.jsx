@@ -66,7 +66,7 @@ function mapStateToProps ({ questions, users, authedUser }) {
   let answeredQuestionIds = [];
   let unansweredQuestionIds = [];
 
-  if(questions != {} && users != {} && authedUser != null)
+  if(questions !== {} && users !== {} && authedUser !== null)
   {  
     answeredQuestionIds = Object.keys(questions).filter(key => authedUserInfo.answers.hasOwnProperty(key))
     .sort((a,b) => questions[b].timestamp - questions[a].timestamp);
