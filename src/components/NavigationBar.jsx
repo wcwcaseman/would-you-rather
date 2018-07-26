@@ -1,8 +1,14 @@
-import React from 'react'
+import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom'
+import { connect } from 'react-redux'
 import {Navbar , NavItem, Nav} from 'react-bootstrap'
 
-export default function NavigationBar () {
+class NavigationBar extends Component {
+
+render() {
+
+const {authedUser} = this.props
+
   return (
     <Navbar inverse collapseOnSelect>
     <Navbar.Header>
@@ -24,7 +30,7 @@ export default function NavigationBar () {
     </Nav>
     <Nav pullRight>
         <NavItem eventKey={1}>
-        Hello, Person
+        Hello, {authedUser}
         </NavItem>
         <NavItem eventKey={2} href="/Login">
         Logout
@@ -35,4 +41,15 @@ export default function NavigationBar () {
 
 
   )
-}
+}}
+
+function mapStateToProps ({authedUser}) {
+    
+  return {
+    authedUser : authedUser,
+
+  }
+  }
+
+
+export default connect(mapStateToProps)(NavigationBar);

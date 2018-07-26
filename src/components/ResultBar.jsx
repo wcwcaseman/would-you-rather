@@ -25,7 +25,7 @@ class ResultBar extends Component {
     const totalVotes = question.optionOne.votes.length + question.optionTwo.votes.length;
     let answer = null;
 
-    if(answerNumber == 1){
+    if(answerNumber === 1){
       votes = question.optionOne.votes.length;   
       answer = question.optionOne.text;
     }else{
