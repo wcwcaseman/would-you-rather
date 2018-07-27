@@ -13,7 +13,6 @@ class LeaderBoard extends Component {
       
         <div>
             <ul>
-                UnansweredQuestions
               {users.map((id) => (
               <li key={id}>
                   <QuestionScoreCard id={id} />
@@ -28,7 +27,7 @@ class LeaderBoard extends Component {
 
 
   //takes in questions state and returns question ids sorted by timestamp?
-function mapStateToProps ({ questions, users, authedUser }) {
+function mapStateToProps ({ users }) {
 
  // const authedUserInfo = users[authedUser];
   const userKeys = users ?  Object.keys(users) : [];
