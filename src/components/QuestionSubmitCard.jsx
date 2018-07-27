@@ -3,9 +3,13 @@ import { connect } from 'react-redux'
 import { Panel, Button,Radio, FormGroup, Grid, Col } from 'react-bootstrap'
 
 class QuestionSubmitCard extends Component {
+
+
+
     render() {
 
       const {optionOneText,optionTwoText, authorsName, authorsAvatar } = this.props
+
 
       return(  
       

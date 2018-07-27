@@ -25,7 +25,6 @@ class QuestionResultsCard extends Component {
           <h4>Results:</h4>
           <ResultBar question={question} answerNumber={1}></ResultBar>
           <ResultBar question={question} answerNumber={2} ></ResultBar>
-          <Button>Submit</Button>
           </Col>
        </Grid>
       </Panel.Body>
