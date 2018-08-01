@@ -27,13 +27,17 @@ class App extends Component {
       <Router>
           <Fragment>         
               <NavigationBar />
-                  <Grid>
+
+              <Grid>        
+                  {this.props.loggedIn === true ? <SignIn/> :
+                <Fragment>
                     <Route path='/' exact component={QuestionsList} />
                     <Route path='/NewQuestion' component={NewQuestion} />
-                    <Route path='/Login' component={SignIn} />
                     <Route path='/LeaderBoard' component={LeaderBoard} />
                     <Route path='/questions/:question_id' component={Question} />
-                  </Grid>
+                </Fragment>
+                  }
+                </Grid>
           </Fragment>
         </Router>
           
@@ -42,4 +46,10 @@ class App extends Component {
   }
 }
 
-export default connect()(App)
+function mapStateToProps ({ authedUser }) {
+  return {
+    loggedIn: authedUser === null
+  }
+}
+
+export default connect(mapStateToProps)(App)

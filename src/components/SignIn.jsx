@@ -53,7 +53,7 @@ class SignIn extends Component {
                 ))}
           </DropdownButton>  
           <Row>
-          <Button type="submit">Submit</Button>
+          <Button type="submit" disabled={!this.state.userSelected} >Submit</Button>
           </Row>
           </form>
           </Panel.Body>

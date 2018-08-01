@@ -19,7 +19,9 @@ const {authedUser} = this.props
     </Navbar.Brand>
     <Navbar.Toggle />
     </Navbar.Header>
+    {authedUser != null &&
     <Navbar.Collapse>
+
     <Nav>
         <NavItem eventKey={1} href="/NewQuestion">
         New Question
@@ -28,6 +30,7 @@ const {authedUser} = this.props
         Leader Board
         </NavItem>
     </Nav>
+
     <Nav pullRight>
         <NavItem eventKey={1}>
         Hello, {authedUser}
@@ -36,7 +39,9 @@ const {authedUser} = this.props
         Logout
         </NavItem>
     </Nav>
+
     </Navbar.Collapse>
+        }
     </Navbar>
 
 

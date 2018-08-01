@@ -15,7 +15,7 @@ export function handleInitialData () {
           //dispatch actions to add data to the store -> these dispatches go to reducers
         dispatch(receiveUsers(users))
         dispatch(receiveQuestions(questions))
-        dispatch(setAuthedUser(AUTHED_ID))
+       // dispatch(setAuthedUser(AUTHED_ID))
       })
   }
 }
