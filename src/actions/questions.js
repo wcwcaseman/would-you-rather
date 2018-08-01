@@ -48,7 +48,11 @@ export function handleAnswerQuestion (authedUser, qid, answer) {
 
     //save to database
     return saveQuestionAnswer({authedUser, qid, answer})
-    .then((question) => dispatch(answerQuestion(question)))
+    .then((question) => 
+    {
+    //dispatch(answerQuestion(question))
+    }
+  )
     .catch((e) => {
         alert('The was an error liking the tweet. Try again.')
       })

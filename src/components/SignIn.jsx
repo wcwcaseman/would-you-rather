@@ -1,10 +1,42 @@
 import React, { Component } from 'react'
-import { Panel } from 'react-bootstrap'
+import { connect } from 'react-redux'
+import { Panel, DropdownButton, MenuItem, Button, Row } from 'react-bootstrap'
+import { setAuthedUser } from '../actions/authedUser'
 
-//const BUTTONS = ['Default', 'Primary', 'Success', 'Info', 'Warning', 'Danger'];
 
 class SignIn extends Component {
+
+  state = {
+    userSelected: '',
+    userSelectedDisplay: ''
+  }
+
+  handleSelectionChange = (e) => {
+    const userSelected = e.id
+    const userSelectedDisplay = e.name
+
+    this.setState(() => ({
+      userSelected
+    }))
+    this.setState(() => ({
+      userSelectedDisplay
+    }))
+  }
+
+  handleSubmit = (e) => {
+    e.preventDefault()
+    const { dispatch } = this.props
+    const { userSelected } = this.state
+
+    dispatch(setAuthedUser(userSelected))
+
+  }
+
+
   render() {
+
+    const {userSelectList} = this.props;
+
     return (
       
         <Panel >
@@ -14,16 +46,16 @@ class SignIn extends Component {
           </Panel.Heading>
           <Panel.Body>
           <div>sign in </div>
-{/*             <DropdownButton
-              bsStyle={title.toLowerCase()}
-              title={title}
-              key={i}
-              id={`dropdown-basic-${i}`}>
-
-              <MenuItem eventKey="1">Action</MenuItem>
-              <MenuItem eventKey="2">Another action</MenuItem>
-              <MenuItem eventKey="3" active >Active Item</MenuItem>
-            </DropdownButton> */}
+          <form onSubmit={this.handleSubmit}>
+          <DropdownButton id="userDropdown" title={this.state.userSelectedDisplay} onSelect={this.handleSelectionChange} >
+                {userSelectList.map((user) => (
+                  <MenuItem key={user.id} eventKey={user}>{user.name}</MenuItem>
+                ))}
+          </DropdownButton>  
+          <Row>
+          <Button type="submit">Submit</Button>
+          </Row>
+          </form>
           </Panel.Body>
         </Panel>
      
@@ -31,4 +63,18 @@ class SignIn extends Component {
   }
 }
 
-export default SignIn
+function mapStateToProps ({ authedUser, users}) {
+    
+  let userSelectList = [];
+  if(Object.keys(users).length !== 0){
+    userSelectList = Object.values(users);
+  }
+
+return {
+  authedUser,
+  users: users,
+  userSelectList : userSelectList
+}
+}
+
+export default connect(mapStateToProps)(SignIn);
