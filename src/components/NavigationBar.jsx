@@ -1,9 +1,16 @@
 import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom'
+import { NavLink, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import {Navbar , NavItem, Nav} from 'react-bootstrap'
+import { setAuthedUser } from '../actions/authedUser'
 
 class NavigationBar extends Component {
+
+  handleLogOut = (e) => {
+    const { dispatch } = this.props
+    dispatch(setAuthedUser(null))
+    this.props.history.push(`/`)
+  }
 
 render() {
 
@@ -23,19 +30,23 @@ const {authedUser} = this.props
     <Navbar.Collapse>
 
     <Nav>
-        <NavItem eventKey={1} href="/NewQuestion">
+      <NavItem>
+        <NavLink to='/NewQuestion' exact >
         New Question
-        </NavItem>
-        <NavItem eventKey={2} href="/LeaderBoard">
-        Leader Board
+        </NavLink>
+      </NavItem>
+        <NavItem>
+          <NavLink to='/LeaderBoard' exact >
+          Leader Board
+          </NavLink>
         </NavItem>
     </Nav>
 
     <Nav pullRight>
-        <NavItem eventKey={1}>
+        <NavItem>
         Hello, {authedUser}
         </NavItem>
-        <NavItem eventKey={2} href="/Login">
+        <NavItem onClick={this.handleLogOut}>
         Logout
         </NavItem>
     </Nav>
@@ -57,4 +68,4 @@ function mapStateToProps ({authedUser}) {
   }
 
 
-export default connect(mapStateToProps)(NavigationBar);
+export default withRouter(connect(mapStateToProps)(NavigationBar));
