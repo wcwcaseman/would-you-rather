@@ -1,19 +1,20 @@
 import React, { Component } from 'react';
 import { handleAddQuestion } from '../actions/questions'
 import { connect } from 'react-redux'
-import { Panel, Button, FormControl } from 'react-bootstrap'
+import { Panel, Button, FormControl, FormGroup } from 'react-bootstrap'
+import { withRouter } from 'react-router-dom'
 
 class NewQuestion extends Component {
 
     //we use component state instead of the store as it is easier and redux wouldnt give us any benefits(Not using this state anywhere else in app no need to pass it)
     state = {
       optionOneText: '',
-      optionTwoText: '',
+      optionTwoText: ''
     }
 
     handleOptionOneChange = (e) => {
       const optionOneText = e.target.value
-  
+
       this.setState(() => ({
         optionOneText
       }))
@@ -40,6 +41,8 @@ class NewQuestion extends Component {
         optionOneText: '',
         optionTwoText: ''
       }))
+
+      this.props.history.push(`/`)
     }
 
 
@@ -54,6 +57,7 @@ class NewQuestion extends Component {
         <div>Complete the question:</div>
         <strong>Would you rather ...</strong>
         <form  onSubmit={this.handleSubmit} >
+        <FormGroup>
         <FormControl
             id="formControlsText"
             type="text"
@@ -61,7 +65,9 @@ class NewQuestion extends Component {
             value={optionOneText}
             onChange={this.handleOptionOneChange}
             />
+            </FormGroup>
         <div>OR</div>
+        <FormGroup>
         <FormControl
             id="formControlsText"
             type="text"
@@ -69,7 +75,8 @@ class NewQuestion extends Component {
             value={optionTwoText}
             onChange={this.handleOptionTwoChange}
             />
-        <Button type="submit">Submit</Button>
+            </FormGroup>
+        <Button type="submit" disabled={!(optionOneText.length > 0 && optionTwoText.length > 0) } >Submit</Button>
         </form>
       </Panel.Body>
     </Panel>
@@ -77,4 +84,4 @@ class NewQuestion extends Component {
     }
   }
 
-  export default connect()(NewQuestion);
+  export default withRouter(connect()(NewQuestion));

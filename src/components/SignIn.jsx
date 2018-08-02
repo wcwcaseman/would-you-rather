@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Panel, DropdownButton, MenuItem, Button, Row } from 'react-bootstrap'
 import { setAuthedUser } from '../actions/authedUser'
+import { withRouter } from 'react-router-dom'
 
 
 class SignIn extends Component {
@@ -29,7 +30,7 @@ class SignIn extends Component {
     const { userSelected } = this.state
 
     dispatch(setAuthedUser(userSelected))
-
+    this.props.history.push(`/`)
   }
 
 
@@ -77,4 +78,4 @@ return {
 }
 }
 
-export default connect(mapStateToProps)(SignIn);
+export default withRouter(connect(mapStateToProps)(SignIn));

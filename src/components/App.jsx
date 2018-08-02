@@ -32,7 +32,7 @@ class App extends Component {
                   {this.props.loggedIn === true ? <SignIn/> :
                 <Fragment>
                     <Route path='/' exact component={QuestionsList} />
-                    <Route path='/NewQuestion' component={NewQuestion} />
+                    <Route path='/add' component={NewQuestion} />
                     <Route path='/LeaderBoard' component={LeaderBoard} />
                     <Route path='/questions/:question_id' component={Question} />
                 </Fragment>

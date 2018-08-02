@@ -33,7 +33,7 @@ export function handleAddQuestion (optionOneText, optionTwoText) {
   }
 }
 
-function answerQuestion ({ authedUser, qid, answer }) {
+function answerQuestion ( authedUser, qid, answer ) {
   return {
     type: ANSWER_QUESTION,
     qid,
@@ -45,16 +45,22 @@ function answerQuestion ({ authedUser, qid, answer }) {
 //asynchronous action creator exported
 export function handleAnswerQuestion (authedUser, qid, answer) {
   return (dispatch) => {
-
+    newFunction(dispatch, authedUser, qid, answer);
     //save to database
     return saveQuestionAnswer({authedUser, qid, answer})
     .then((question) => 
     {
-    //dispatch(answerQuestion(question))
+
     }
+
+
   )
     .catch((e) => {
         alert('The was an error liking the tweet. Try again.')
       })
   }
+}
+
+function newFunction(dispatch, authedUser, qid, answer) {
+  dispatch(answerQuestion(authedUser, qid, answer));
 }

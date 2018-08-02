@@ -20,7 +20,7 @@ const {authedUser} = this.props
     <Navbar inverse collapseOnSelect>
     <Navbar.Header>
     <Navbar.Brand>
-        <NavLink to='/' exact activeClassName='active'>
+        <NavLink to='/' exact>
                 Home
         </NavLink>
     </Navbar.Brand>
@@ -30,16 +30,16 @@ const {authedUser} = this.props
     <Navbar.Collapse>
 
     <Nav>
-      <NavItem>
-        <NavLink to='/NewQuestion' exact >
+      <li>
+        <NavLink  to='/add' exact >
         New Question
         </NavLink>
-      </NavItem>
-        <NavItem>
-          <NavLink to='/LeaderBoard' exact >
+      </li>
+        <li>
+          <NavLink  to='/LeaderBoard' exact >
           Leader Board
           </NavLink>
-        </NavItem>
+        </li>
     </Nav>
 
     <Nav pullRight>

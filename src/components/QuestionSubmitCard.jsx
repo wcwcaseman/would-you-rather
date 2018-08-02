@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { Panel, Button,Radio, FormGroup, Grid, Col } from 'react-bootstrap'
 import { handleAnswerQuestion } from '../actions/questions'
+import { withRouter } from 'react-router-dom'
 
 class QuestionSubmitCard extends Component {
     //we use component state instead of the store as it is easier and redux wouldnt give us any benefits(Not using this state anywhere else in app no need to pass it)
@@ -82,7 +83,7 @@ class QuestionSubmitCard extends Component {
             </FormGroup>
 
 
-          <Button type="submit">Submit</Button>
+          <Button type="submit" disabled={!this.state.optionSelected} >Submit</Button>
           </form>
           </Col>
        </Grid>
@@ -155,4 +156,4 @@ class QuestionSubmitCard extends Component {
   }
 
 
-  export default connect(mapStateToProps)(QuestionSubmitCard);
+  export default withRouter(connect(mapStateToProps)(QuestionSubmitCard));

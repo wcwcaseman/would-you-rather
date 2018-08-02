@@ -1,6 +1,6 @@
 import { RECEIVE_QUESTIONS, ADD_QUESTION, ANSWER_QUESTION } from '../actions/questions'
 
-export default function tweets (state = {}, action) {
+export default function questions (state = {}, action) {
   switch(action.type) {
     case RECEIVE_QUESTIONS :
       return {
@@ -17,8 +17,37 @@ export default function tweets (state = {}, action) {
       case ANSWER_QUESTION :
       return {
         ...state,
-        
+         [action.qid]: {
+           ...state[action.qid],
+           [action.answer]: {
+             ...state[action.qid][action.answer],
+             votes: state[action.qid][action.answer].votes.concat([action.authedUser])
+           }
+         }
+
+
+
+
+        //  ...users,
+        //  [authedUser]: {
+        //    ...users[authedUser],
+        //    answers: {
+        //      ...users[authedUser].answers,
+        //      [qid]: answer
+        //    }
+        //  },
+        // ...questions,
+        // [qid]: {
+        //   ...questions[qid],
+        //   [answer]: {
+        //     ...questions[qid][answer],
+        //     votes: questions[qid][answer].votes.concat([authedUser])
+        //   }
+        // }
       }
+
+
+      
       
 
 
