@@ -13,8 +13,6 @@ class QuestionCardSkin extends Component {
             <image></image>
           </Col>
           <Col sm={10}>
-
-
           <Button>Submit</Button>
           </Col>
        </Grid>

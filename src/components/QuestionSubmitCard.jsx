@@ -28,27 +28,7 @@ class QuestionSubmitCard extends Component {
       const qid = questionId;
       const answer = optionSelected;
       dispatch(handleAnswerQuestion (authedUser, qid, answer))
-      //Add question to Store
-      //dispatch(handleAnswerQuestion (authedUser, questionId, optionSelected))
-  
-/*       this.setState(() => ({
-        optionSelected: '',
-      })) */
     }
-
-
-
-/*     tylermcginnis: {
-      id: 'tylermcginnis',
-      name: 'Tyler McGinnis',
-      avatarURL: '/images/TylerM.png',
-      answers: {
-        "vthrdm985a262al8qx3do": 'optionOne',
-        "xj352vofupe1dqz9emx13r": 'optionTwo',
-      },
-      questions: ['loxhs1bqm25b708cmbf3g', 'vthrdm985a262al8qx3do'],
-    }, */
-
 
     render() {
 
@@ -70,8 +50,6 @@ class QuestionSubmitCard extends Component {
           </Col>
           <Col sm={10}>
           <h4>Would You Rather ...</h4>
-{/*           <input type="radio" name="Answers" id="Answer1" value="Answer1"></input>
-          <input type="radio" name="Answers" id="Answer2" value="Answer2"></input> */}
           <form onSubmit={this.handleSubmit} >
             <FormGroup>   
                 <Radio name="radioGroup" value="optionOne" onChange={this.handleOptionChange}>
@@ -110,41 +88,6 @@ class QuestionSubmitCard extends Component {
       optionTwoText = question.optionTwo.text;
     }
 
-    //percentageOfVotes, votes, totalVotes, answer
-
-    
- /*  sarahedo: {
-    id: 'sarahedo',
-    name: 'Sarah Edo',
-    avatarURL: '',
-    answers: {
-      "8xf0y6ziyjabvozdd253nd": 'optionOne',
-      "6ni6ok3ym7mf1p33lnez": 'optionOne',
-      "am8ehyc8byjqgar0jgpub9": 'optionTwo',
-      "loxhs1bqm25b708cmbf3g": 'optionTwo'
-    },
-    questions: ['8xf0y6ziyjabvozdd253nd', 'am8ehyc8byjqgar0jgpub9']
-  },
-
-
-  "8xf0y6ziyjabvozdd253nd": {
-    id: '8xf0y6ziyjabvozdd253nd',
-    author: 'sarahedo',
-    timestamp: 1467166872634,
-    optionOne: {
-      votes: ['sarahedo'],
-      text: 'have horrible short term memory',
-    },
-    optionTwo: {
-      votes: [],
-      text: 'have horrible long term memory'
-    }
-  },
- */
-
-
-
-  
   return {
     authedUser,
     authorsName : author.name,

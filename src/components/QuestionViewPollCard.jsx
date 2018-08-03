@@ -57,5 +57,4 @@ return {
 }
 }
 
-
   export default withRouter(connect(mapStateToProps)(QuestionViewPollCard)) 

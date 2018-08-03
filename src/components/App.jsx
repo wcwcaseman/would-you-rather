@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Route } from 'react-router-dom'
 import { connect } from 'react-redux'
 import '../App.css';
 import SignIn from './SignIn';
-//import QuestionSubmitCard from './QuestionSubmitCard'
 import { Grid } from 'react-bootstrap'
 import Question from './Question'
 import NewQuestion from './NewQuestion'
@@ -22,8 +21,6 @@ class App extends Component {
 
   render() {
     return (
-
-
       <Router>
           <Fragment>         
               <NavigationBar />
@@ -40,8 +37,6 @@ class App extends Component {
                 </Grid>
           </Fragment>
         </Router>
-          
-
     );
   }
 }

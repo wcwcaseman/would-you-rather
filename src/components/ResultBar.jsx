@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { ProgressBar, Panel } from 'react-bootstrap'
 
-
-
 class ResultBar extends Component {
 
     render() {

@@ -24,32 +24,7 @@ export default function questions (state = {}, action) {
              votes: state[action.qid][action.answer].votes.concat([action.authedUser])
            }
          }
-
-
-
-
-        //  ...users,
-        //  [authedUser]: {
-        //    ...users[authedUser],
-        //    answers: {
-        //      ...users[authedUser].answers,
-        //      [qid]: answer
-        //    }
-        //  },
-        // ...questions,
-        // [qid]: {
-        //   ...questions[qid],
-        //   [answer]: {
-        //     ...questions[qid][answer],
-        //     votes: questions[qid][answer].votes.concat([authedUser])
-        //   }
-        // }
       }
-
-
-      
-      
-
 
     default :
       return state

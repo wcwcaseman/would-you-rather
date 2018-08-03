@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-
-//import { Panel, Button, Radio, FormControl, Grid, Row, Col,DropdownButton,MenuItem } from 'react-bootstrap'
 import QuestionScoreCard from './QuestionScoreCard'
 
 class LeaderBoard extends Component {
@@ -43,9 +41,5 @@ function mapStateToProps ({ users }) {
       users: users ?  usersInfo : []
   }
 }
-
-
-
-
 
 export default connect(mapStateToProps)(LeaderBoard)

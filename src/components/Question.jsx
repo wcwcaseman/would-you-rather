@@ -1,14 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-//import { ProgressBar, Panel, Button,Radio, FormGroup, Grid, Row, Col,DropdownButton,MenuItem } from 'react-bootstrap'
 import QuestionSubmitCard from './QuestionSubmitCard'
 import QuestionResultsCard from './QuestionResultsCard'
 
 class Question extends Component {
-
-
-
-
     render() {
 
       var questionDisplay;
@@ -18,7 +13,6 @@ class Question extends Component {
         questionDisplay = <QuestionSubmitCard question={this.props.question}/>
       }
 
-
       return(  
         <div>       
           {questionDisplay}
@@ -27,7 +21,6 @@ class Question extends Component {
       )
     }
   }
-
 
 
 //takes in questions state and returns question ids sorted by timestamp?
@@ -48,8 +41,5 @@ function mapStateToProps ({ questions, users, authedUser },  props ) {
     question: question
   }
 }
-
-
-
 
   export default connect(mapStateToProps)(Question);
