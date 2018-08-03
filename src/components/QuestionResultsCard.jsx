@@ -6,12 +6,12 @@ import ResultBar from './ResultBar'
 class QuestionResultsCard extends Component {
     render() {
 
-      const {question, authorsName, authorsAvatar } = this.props
+      const {question, authorsName, authorsAvatar, authUserSelectOptionOne, authUserSelectOptionTwo } = this.props
 
       return(  
       
     <Panel>
-      <Panel.Heading>Person asks:</Panel.Heading>
+      <Panel.Heading>{authorsName} asks:</Panel.Heading>
       <Panel.Body>
           <Grid>
           <Col sm={2}>
@@ -23,8 +23,8 @@ class QuestionResultsCard extends Component {
           </Col>
           <Col sm={9}>
           <h4>Results:</h4>
-          <ResultBar question={question} answerNumber={1}></ResultBar>
-          <ResultBar question={question} answerNumber={2} ></ResultBar>
+          <ResultBar question={question} answerNumber={1} authSelected={authUserSelectOptionOne}></ResultBar>
+          <ResultBar question={question} answerNumber={2} authSelected={authUserSelectOptionTwo}></ResultBar>
           </Col>
        </Grid>
       </Panel.Body>
@@ -38,6 +38,8 @@ class QuestionResultsCard extends Component {
     let author = {};
     let optionOneText = "";
     let optionTwoText = "";
+    let authUserSelectOptionOne = false;
+    let authUserSelectOptionTwo = false;
     //data can be undefined when navigating by url
     if(question === undefined && Object.keys(questions).length !== 0){
       const { question_id } = props.match.params;
@@ -50,7 +52,11 @@ class QuestionResultsCard extends Component {
       optionTwoText = question.optionTwo.text;
     }
 
-
+    if(users[authedUser].answers[question.id] === 'optionOne'){
+      authUserSelectOptionOne = true;
+    }else{
+      authUserSelectOptionTwo = true;
+    }
   
   return {
     authedUser,
@@ -58,7 +64,9 @@ class QuestionResultsCard extends Component {
     authorsAvatar : author.avatarURL,
     question : question,
     optionOneText : optionOneText,
-    optionTwoText: optionTwoText 
+    optionTwoText: optionTwoText,
+    authUserSelectOptionOne : authUserSelectOptionOne,
+    authUserSelectOptionTwo : authUserSelectOptionTwo
   }
   }
 

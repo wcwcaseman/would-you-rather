@@ -40,37 +40,6 @@ class QuestionViewPollCard extends Component {
     }
   }
 
-
- /*  sarahedo: {
-    id: 'sarahedo',
-    name: 'Sarah Edo',
-    avatarURL: '',
-    answers: {
-      "8xf0y6ziyjabvozdd253nd": 'optionOne',
-      "6ni6ok3ym7mf1p33lnez": 'optionOne',
-      "am8ehyc8byjqgar0jgpub9": 'optionTwo',
-      "loxhs1bqm25b708cmbf3g": 'optionTwo'
-    },
-    questions: ['8xf0y6ziyjabvozdd253nd', 'am8ehyc8byjqgar0jgpub9']
-  },
-
-
-  "8xf0y6ziyjabvozdd253nd": {
-    id: '8xf0y6ziyjabvozdd253nd',
-    author: 'sarahedo',
-    timestamp: 1467166872634,
-    optionOne: {
-      votes: ['sarahedo'],
-      text: 'have horrible short term memory',
-    },
-    optionTwo: {
-      votes: [],
-      text: 'have horrible long term memory'
-    }
-  },
- */
-
-
 //pass in require state objects, then the id prop from the outer container
 function mapStateToProps ({authedUser, users, questions}, { id }) {
 

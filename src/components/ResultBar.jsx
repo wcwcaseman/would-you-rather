@@ -7,9 +7,13 @@ import { ProgressBar, Panel } from 'react-bootstrap'
 class ResultBar extends Component {
 
     render() {
-        const {percentageOfVotes, votes, totalVotes, answer} = this.props
+        const {percentageOfVotes, votes, totalVotes, answer,authSelected} = this.props
       return(  
-        <Panel bsStyle="success">
+        <Panel bsStyle={(authSelected ? 'success' : 'default') }>
+
+        {(authSelected &&
+        <Panel.Heading>Your Vote</Panel.Heading>
+        )}
             <div>Would you rather {answer}?</div>
             <ProgressBar now={percentageOfVotes} label={`${percentageOfVotes}%`} />
             <div>{votes} out of {totalVotes} votes</div>
@@ -19,7 +23,7 @@ class ResultBar extends Component {
     }
   }
 
-  function mapStateToProps ({} ,{ question, answerNumber }) {
+  function mapStateToProps ({} ,{ question, answerNumber,authSelected }) {
     
     let votes = null;
     const totalVotes = question.optionOne.votes.length + question.optionTwo.votes.length;
@@ -38,7 +42,8 @@ class ResultBar extends Component {
     percentageOfVotes : percentageOfVotes,
     votes : votes,
     totalVotes : totalVotes,
-    answer : answer
+    answer : answer,
+    authSelected : authSelected
   }
   }
 

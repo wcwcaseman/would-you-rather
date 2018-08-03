@@ -14,7 +14,7 @@ class NavigationBar extends Component {
 
 render() {
 
-const {authedUser} = this.props
+const {authedUser, userName} = this.props
 
   return (
     <Navbar inverse collapseOnSelect>
@@ -36,7 +36,7 @@ const {authedUser} = this.props
         </NavLink>
       </li>
         <li>
-          <NavLink  to='/LeaderBoard' exact >
+          <NavLink  to='/leaderboard' exact >
           Leader Board
           </NavLink>
         </li>
@@ -44,7 +44,7 @@ const {authedUser} = this.props
 
     <Nav pullRight>
         <NavItem>
-        Hello, {authedUser}
+        Hello, {userName}
         </NavItem>
         <NavItem onClick={this.handleLogOut}>
         Logout
@@ -59,10 +59,17 @@ const {authedUser} = this.props
   )
 }}
 
-function mapStateToProps ({authedUser}) {
-    
+function mapStateToProps ({users,authedUser}) {
+
+  let userName = '' ;
+
+  if(users !== null && authedUser !== null){
+    userName = users[authedUser].name ;
+  }
+
   return {
     authedUser : authedUser,
+    userName : userName
 
   }
   }
