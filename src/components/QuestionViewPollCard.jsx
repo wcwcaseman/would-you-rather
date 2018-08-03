@@ -42,12 +42,9 @@ class QuestionViewPollCard extends Component {
 
 //pass in require state objects, then the id prop from the outer container
 function mapStateToProps ({authedUser, users, questions}, { id }) {
-
-  //tweet could be null if we go to a url with an id that doesn't exist
 const question = questions[id]
 const author = users[question.author]
-//pass the twwet the authed user so we know who is liking the tweet and the tweet info for display
-//formatTweet pass in the tweet, user who made the tweet, current user and parent tweet
+
 return {
   authedUser,
   authorsName : author.name,

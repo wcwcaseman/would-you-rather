@@ -1,15 +1,4 @@
-import React, { Component, Fragment } from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom'
-import { connect } from 'react-redux'
-import '../App.css';
-import SignIn from './SignIn';
-import { Grid } from 'react-bootstrap'
-import Question from './Question'
-import NewQuestion from './NewQuestion'
-import QuestionsList from './QuestionsList'
-import NavigationBar from './NavigationBar'
-import LeaderBoard from './LeaderBoard'
-import { handleInitialData } from '../actions/shared'
+import React, { Component } from 'react';
 import { Panel } from 'react-bootstrap'
 
 class App extends Component {

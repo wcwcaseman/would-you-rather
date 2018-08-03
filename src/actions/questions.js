@@ -56,7 +56,7 @@ export function handleAnswerQuestion (authedUser, qid, answer) {
 
   )
     .catch((e) => {
-        alert('The was an error liking the tweet. Try again.')
+        alert('The was an error. Try again.')
       })
   }
 }
