@@ -9,6 +9,7 @@ import NewQuestion from './NewQuestion'
 import QuestionsList from './QuestionsList'
 import NavigationBar from './NavigationBar'
 import LeaderBoard from './LeaderBoard'
+import error404Page from './error404Page'
 import { handleInitialData } from '../actions/shared'
 
 class App extends Component {
@@ -32,6 +33,7 @@ class App extends Component {
                     <Route path='/add' component={NewQuestion} />
                     <Route path='/leaderboard' component={LeaderBoard} />
                     <Route path='/questions/:question_id' component={Question} />
+                    <Route path='/404' component={error404Page} />
                 </Fragment>
                   }
                 </Grid>

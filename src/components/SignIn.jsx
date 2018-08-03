@@ -30,7 +30,7 @@ class SignIn extends Component {
     const { userSelected } = this.state
 
     dispatch(setAuthedUser(userSelected))
-    this.props.history.push(`/`)
+   // this.props.history.push(`/`)
   }
 
 

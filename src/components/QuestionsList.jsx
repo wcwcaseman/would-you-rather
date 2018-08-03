@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { Tab, Nav, NavItem,Navbar, Panel, Row, Col} from 'react-bootstrap'
-//import ResultBar from './ResultBar'
+import { Tab, Nav, NavItem, Navbar, Panel, Row, Col} from 'react-bootstrap'
 import QuestionViewPollCard from './QuestionViewPollCard'
+
 
 
 class QuestionsList extends Component{
@@ -34,8 +34,6 @@ class QuestionsList extends Component{
                  </li>
                 ))}
               </ul>
-
-
               </Tab.Pane>
               <Tab.Pane eventKey="AnsweredQuestions">
               <ul>
@@ -46,7 +44,6 @@ class QuestionsList extends Component{
                   </li>
                 ))}
               </ul>
-
               </Tab.Pane>
             </Tab.Content>
 

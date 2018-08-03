@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import QuestionSubmitCard from './QuestionSubmitCard'
 import QuestionResultsCard from './QuestionResultsCard'
+import { withRouter } from 'react-router-dom'
 
 class Question extends Component {
     render() {
@@ -28,6 +29,12 @@ function mapStateToProps ({ questions, users, authedUser },  props ) {
 
   const { question_id } = props.match.params;
   const question = questions[question_id];
+  //if the question does not exist show 404 page
+if(question === undefined && question_id !== null)
+{
+  props.history.push(`/404`)
+}
+
   const authedUserInfo = users[authedUser];
   let hasQuestionBeenAnswered = false;
 
@@ -42,4 +49,4 @@ function mapStateToProps ({ questions, users, authedUser },  props ) {
   }
 }
 
-  export default connect(mapStateToProps)(Question);
+  export default withRouter(connect(mapStateToProps)(Question));
