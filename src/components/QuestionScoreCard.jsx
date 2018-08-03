@@ -45,18 +45,13 @@ class QuestionScoreCard extends Component {
   }
 
    //takes in questions state and returns question ids sorted by timestamp?
-function mapStateToProps ({ users } , {id}) {
-
-  const userInfo = users[id];
-  const answeredQuestions = Object.keys(userInfo.answers).length;
-  const createdQuestions = userInfo.questions.length;
-
+function mapStateToProps ({ users } , {user}) {
   return {
-    answeredQuestions: answeredQuestions,
-    createdQuestions: createdQuestions,
-    name : userInfo.name,
-    avatar : userInfo.avatarURL,
-    score : answeredQuestions + createdQuestions
+    answeredQuestions: user.answeredQuestions,
+    createdQuestions: user.createdQuestions,
+    name : user.name,
+    avatar : user.avatarURL,
+    score : user.score
 
   }
 }

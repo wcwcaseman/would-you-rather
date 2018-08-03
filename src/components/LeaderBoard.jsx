@@ -13,9 +13,9 @@ class LeaderBoard extends Component {
       
         <div>
             <ul>
-              {users.map((id) => (
-              <li key={id}>
-                  <QuestionScoreCard id={id} />
+              {users.map((user) => (
+              <li key={user.id}>
+                  <QuestionScoreCard user={user} />
               </li>
               ))}
             </ul>
@@ -30,10 +30,17 @@ class LeaderBoard extends Component {
 function mapStateToProps ({ users }) {
 
  // const authedUserInfo = users[authedUser];
-  const userKeys = users ?  Object.keys(users) : [];
+
+  const usersInfo = users ?  Object.values(users).map((user) =>  
+  Object.assign({}, user, 
+    { 
+      answeredQuestions: Object.keys(user.answers).length, 
+      createdQuestions: user.questions.length,
+      score: Object.keys(user.answers).length + user.questions.length
+    })).sort((a,b) => a.score < b.score) : [];
 
   return {
-      users: users ?  userKeys : []
+      users: users ?  usersInfo : []
   }
 }
 
